@@ -6,7 +6,7 @@ import { z } from 'zod';
 export interface AgentConfig {
   name: string;
   description: string;
-  model: 'gpt-4' | 'gpt-3.5-turbo' | 'claude-3-opus-20240229' | 'claude-3-sonnet-20240229';
+  model: 'gpt-4' | 'gpt-3.5-turbo' | 'claude-3-opus' | 'claude-3-sonnet';
   provider: 'openai' | 'anthropic';
   maxRetries?: number;
   temperature?: number;
@@ -321,8 +321,15 @@ When proposing actions, use this format:
       content: msg.content,
     }));
 
+    // Map simplified model names to full Anthropic model names
+    const modelMap: Record<string, string> = {
+      'claude-3-opus': 'claude-3-opus-20240229',
+      'claude-3-sonnet': 'claude-3-sonnet-20240229',
+    };
+    const anthropicModel = modelMap[this.config.model] || this.config.model;
+
     const response = await this.anthropic.messages.create({
-      model: this.config.model,
+      model: anthropicModel,
       max_tokens: 2048,
       system: this.systemPrompt,
       messages,

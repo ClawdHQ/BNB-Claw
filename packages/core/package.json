@@ -2,17 +2,17 @@
   "name": "@bnb-claw/core",
   "version": "0.1.0",
   "description": "Core framework for BNB Claw AI agents",
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.mts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts",
-    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "build": "tsup && node -e \"require('fs').renameSync('dist/index.d.mts', 'dist/index.d.ts')\"",
+    "dev": "tsup --watch",
     "test": "vitest",
     "clean": "rm -rf dist *.tsbuildinfo"
   },
