@@ -2,12 +2,12 @@
   "name": "@bnb-claw/modules",
   "version": "0.1.0",
   "description": "DeFi modules for BNB Claw (Swap, Lend, Stake, Treasury)",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
     }
   },
   "scripts": {
