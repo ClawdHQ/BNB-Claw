@@ -98,7 +98,48 @@ const result = await swapModule.swap({
 - Executes optimal swap trades
 - Reports new allocation
 
-### 4. Examples Package ✅
+### 4. CLI Package (@bnb-claw/cli) ✅
+
+#### bnb-claw init Command
+Comprehensive project initialization:
+- **Interactive wizard** - Step-by-step project setup
+- **Folder structure** - Automatic directory creation (src/, package.json, tsconfig.json)
+- **Configuration files** - Generate .env, .gitignore, README.md
+- **Module selection** - Choose from Swap, Lend, Stake, Treasury modules
+- **AI provider setup** - Configure OpenAI or Anthropic
+- **Network configuration** - Select BSC Testnet or Mainnet
+- **Dependency management** - Automatic installation with npm/yarn/pnpm
+- **Agent code generation** - Create working agent with selected modules
+
+**Options**:
+- `-n, --name` - Project name
+- `-d, --directory` - Target directory
+- `--skip-install` - Skip dependency installation
+
+#### bnb-claw agent create Command
+Generate agent configurations:
+- **Agent naming** - Custom agent names
+- **AI model selection** - GPT-4, Claude, etc.
+- **Module integration** - Select which DeFi modules to include
+- **TypeScript generation** - Create typed agent factory functions
+- **Configuration interfaces** - Generate TypeScript types
+- **Documentation** - Auto-generated JSDoc comments
+
+**Options**:
+- `-n, --name` - Agent name
+- `-m, --model` - AI model
+- `-p, --provider` - AI provider
+- `--modules` - Modules to include
+
+#### CLI Features:
+- **Commander.js** - Robust command parsing
+- **Inquirer.js** - Beautiful interactive prompts
+- **Chalk** - Colorful terminal output
+- **Ora** - Loading spinners and progress indicators
+- **fs-extra** - Enhanced file operations
+- **Comprehensive help** - Detailed help text for all commands
+
+### 5. Examples Package ✅
 Simple example demonstrating:
 - Agent initialization with multiple LLM providers
 - Module registration (Swap, Lend, Stake)
@@ -230,7 +271,12 @@ bnb-claw/
 │   │   ├── src/
 │   │   │   └── simple-agent.ts
 │   │   └── package.json
-│   ├── cli/               # (Placeholder for CLI tools)
+│   ├── cli/               # CLI tools
+│   │   ├── src/
+│   │   │   ├── commands/  # Init and agent commands
+│   │   │   └── index.ts   # CLI entry point
+│   │   ├── package.json
+│   │   └── README.md
 │   └── agents/            # (Placeholder for pre-built agents)
 ├── docs/                  # Documentation
 │   ├── api/
@@ -245,13 +291,46 @@ bnb-claw/
 └── README.md              # Project documentation
 ```
 
+## Implemented Features
+
+### Phase 4: CLI Tools ✅
+The BNB Claw CLI has been successfully implemented with the following features:
+
+#### **bnb-claw init** Command
+- Interactive project initialization wizard
+- Automatic folder structure creation
+- Configuration file generation (package.json, tsconfig.json, .env, README.md)
+- Module selection (Swap, Lend, Stake, Treasury)
+- AI provider setup (OpenAI, Anthropic)
+- Network selection (BSC Testnet, BSC Mainnet)
+- Dependency installation
+- Generated agent code with selected modules
+
+#### **bnb-claw agent create** Command
+- Interactive agent configuration wizard
+- Agent naming and description
+- AI model selection (GPT-4, Claude, etc.)
+- Module integration setup
+- Temperature configuration
+- TypeScript agent factory generation
+- Typed configuration interfaces
+
+#### CLI Features:
+- Built with Commander.js for command parsing
+- Inquirer.js for interactive prompts
+- Chalk for colorful terminal output
+- Ora for loading spinners
+- fs-extra for file operations
+- Comprehensive documentation
+
 ## Next Steps (Future Enhancements)
 
-### Phase 4: CLI Tools (Planned)
-- Interactive agent CLI
+### Phase 4: CLI Tools - Additional Features (Planned)
 - Strategy builder
 - Portfolio dashboard
 - Transaction history viewer
+- Module testing commands
+- Configuration management commands
 
 ### Phase 5: Pre-built Agents (Planned)
 - Yield Optimizer Agent
