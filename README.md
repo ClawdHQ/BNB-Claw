@@ -17,6 +17,7 @@ BNB Claw is a plug-and-play AI agent SDK for BNB Chain that enables developers t
 ### Core Packages
 - **[@bnb-claw/core](./packages/core)** - Base agent framework and module system
 - **[@bnb-claw/modules](./packages/modules)** - DeFi protocol integrations (Swap, Lend, Stake, Treasury)
+- **[@bnb-claw/cli](./packages/cli)** - Command-line tools for initializing projects and managing agents
 
 ### Examples
 - **[@bnb-claw/examples](./packages/examples)** - Example implementations and usage patterns
@@ -29,6 +30,30 @@ BNB Claw is a plug-and-play AI agent SDK for BNB Chain that enables developers t
 - pnpm (recommended) or npm
 
 ### Installation
+
+#### Option 1: Use the CLI (Recommended)
+
+The easiest way to get started is using the BNB Claw CLI:
+
+```bash
+# Clone the repository
+git clone https://github.com/ClawdHQ/BNB-Claw.git
+cd BNB-Claw
+
+# Install dependencies
+pnpm install
+
+# Build all packages
+pnpm build
+
+# Initialize a new agent project
+cd packages/cli
+node dist/index.mjs init
+
+# Follow the interactive prompts to configure your project
+```
+
+#### Option 2: Manual Setup
 
 ```bash
 # Clone the repository
@@ -107,6 +132,52 @@ const actions = await agent.planStrategy('Stake 50% of my BNB and swap the rest 
 for (const action of actions) {
   await agent.execute(action);
 }
+```
+
+## 🛠️ CLI Tools
+
+BNB Claw provides a comprehensive CLI for managing agent projects:
+
+### Initialize a New Project
+
+Create a new BNB Claw agent project with the interactive setup wizard:
+
+```bash
+bnb-claw init
+```
+
+Options:
+- `-n, --name <name>` - Project name
+- `-d, --directory <path>` - Target directory
+- `--skip-install` - Skip dependency installation
+
+The CLI will guide you through:
+- Project configuration
+- Module selection (Swap, Lend, Stake, Treasury)
+- AI provider setup (OpenAI, Anthropic)
+- Network selection (Testnet, Mainnet)
+
+### Create a New Agent
+
+Generate a new agent configuration file:
+
+```bash
+bnb-claw agent create
+```
+
+Options:
+- `-n, --name <name>` - Agent name
+- `-m, --model <model>` - AI model (gpt-4, gpt-3.5-turbo, claude-3-opus)
+- `-p, --provider <provider>` - AI provider (openai, anthropic)
+- `--modules <modules...>` - Modules to include (swap, lend, stake, treasury)
+
+Example:
+```bash
+bnb-claw agent create \
+  --name TradingAgent \
+  --model gpt-4 \
+  --provider openai \
+  --modules swap lend
 ```
 
 ## 🏗️ Architecture
@@ -202,7 +273,7 @@ bnb-claw/
 ├── packages/
 │   ├── core/           # Core agent framework
 │   ├── modules/        # DeFi protocol modules
-│   ├── cli/            # CLI tools (planned)
+│   ├── cli/            # CLI tools
 │   ├── agents/         # Pre-built agent templates (planned)
 │   └── examples/       # Usage examples
 ├── docs/               # Documentation
