@@ -1,0 +1,33 @@
+{
+  "name": "@bnb-claw/cli",
+  "version": "0.1.0",
+  "description": "CLI tools for BNB Claw - Initialize projects, test modules, and manage agents",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "bin": {
+    "bnb-claw": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --shims",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "test": "vitest",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@bnb-claw/core": "workspace:*",
+    "@bnb-claw/modules": "workspace:*",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "fs-extra": "^11.2.0",
+    "ethers": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
+    "tsup": "^8.0.1",
+    "vitest": "^1.6.1",
+    "typescript": "^5.3.3"
+  }
+}
