@@ -1,0 +1,19 @@
+{
+  "name": "@bnb-claw/examples",
+  "version": "0.1.0",
+  "description": "Example usage of BNB Claw SDK",
+  "private": true,
+  "scripts": {
+    "dev": "tsx src/simple-agent.ts"
+  },
+  "dependencies": {
+    "@bnb-claw/core": "workspace:*",
+    "@bnb-claw/modules": "workspace:*",
+    "ethers": "^6.10.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
