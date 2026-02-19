@@ -1,0 +1,33 @@
+{
+  "name": "bnb-claw",
+  "version": "0.1.0",
+  "description": "Plug-and-play AI agent SDK for BNB Chain",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean",
+    "dev": "pnpm -r --parallel dev"
+  },
+  "keywords": [
+    "bnb",
+    "ai-agent",
+    "defi",
+    "sdk",
+    "openclaw"
+  ],
+  "author": "BNB Claw Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "tsup": "^8.0.1",
+    "vitest": "^1.2.0",
+    "@types/node": "^20.11.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.0"
+  }
+}
