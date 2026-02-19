@@ -7,7 +7,6 @@ export default defineConfig({
   outExtension({ format }) {
     return {
       js: `.js`,
-      dts: `.d.ts`,
     };
   },
 });
