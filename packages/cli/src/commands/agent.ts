@@ -157,6 +157,17 @@ export async function agentCommand(options: AgentOptions) {
   }
 }
 
+/**
+ * Generate agent configuration TypeScript code
+ * 
+ * @param name - The agent name
+ * @param provider - The AI provider (openai or anthropic)
+ * @param model - The AI model to use
+ * @param modules - Array of module names to include
+ * @param description - Description of the agent
+ * @param temperature - AI temperature setting (0.0-1.0)
+ * @returns TypeScript code for the agent configuration file
+ */
 function generateAgentFile(
   name: string,
   provider: string,

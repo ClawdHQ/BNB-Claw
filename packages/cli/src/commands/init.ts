@@ -182,7 +182,7 @@ dist/
     fs.writeFileSync(path.join(targetDir, 'README.md'), readmeContent);
 
     // Create main agent file
-    const agentCode = generateAgentCode(selectedModules, network);
+    const agentCode = generateAgentCode(selectedModules, network, aiProvider);
     fs.writeFileSync(path.join(targetDir, 'src', 'index.ts'), agentCode);
 
     spinner.succeed('Project structure created!');
@@ -222,6 +222,13 @@ dist/
   }
 }
 
+/**
+ * Generate the .env file content for the project
+ * 
+ * @param network - The target network (testnet or mainnet)
+ * @param aiProvider - The AI provider (openai or anthropic)
+ * @returns The content for the .env file
+ */
 function generateEnvFile(network: string, aiProvider: string): string {
   const rpcUrl = network === 'testnet' 
     ? 'https://data-seed-prebsc-1-s1.binance.org:8545/'
@@ -241,6 +248,14 @@ TRANSACTION_TIMEOUT=30000
 `;
 }
 
+/**
+ * Generate the README.md content for the project
+ * 
+ * @param projectName - Name of the project
+ * @param modules - Array of selected module names
+ * @param packageManager - Package manager to use (npm, yarn, pnpm)
+ * @returns The content for the README.md file
+ */
 function generateReadme(projectName: string, modules: string[], packageManager: string): string {
   const modulesText = modules.map(m => `- ${m.charAt(0).toUpperCase() + m.slice(1)}Module`).join('\n');
   
@@ -276,7 +291,15 @@ ${modulesText}
 `;
 }
 
-function generateAgentCode(modules: string[], network: string): string {
+/**
+ * Generate the main agent code with selected modules
+ * 
+ * @param modules - Array of module names to include (swap, lend, stake, treasury)
+ * @param network - The target network (testnet or mainnet)
+ * @param aiProvider - The AI provider (openai or anthropic)
+ * @returns The TypeScript code for the main agent file
+ */
+function generateAgentCode(modules: string[], network: string, aiProvider: string): string {
   const chainId = network === 'testnet' ? 97 : 56;
   const imports: string[] = ['BaseAgent'];
   const moduleInits: string[] = [];
@@ -393,7 +416,7 @@ async function main() {
     name: 'My DeFi Agent',
     description: 'AI-powered DeFi agent for BNB Chain',
     model: process.env.DEFAULT_AGENT_MODEL || 'gpt-4',
-    provider: '${network === 'testnet' ? 'openai' : 'openai'}',
+    provider: '${aiProvider}',
   });
 
 ${moduleInits.join('\n\n')}
